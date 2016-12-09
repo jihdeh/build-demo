@@ -49,3 +49,23 @@
         border: 1px solid rgba(63, 169, 1, 1);
     }
 }
+
+.block-analytics {
+    border: 2px solid;
+    width: 230px;
+    color: #3fa901;
+    margin: 30px 30px 20px 0;
+    display: inline-block;
+    height: auto;
+    .metric-list {
+        list-style-type: none;
+        text-align: center;
+        li {
+            display: inline-block;
+            i {
+                font-size: 50px;
+                margin: 10px 30px 10px 30px;
+            }
+        }
+    }
+}

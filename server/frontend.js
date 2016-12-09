@@ -15,7 +15,7 @@ export default function Frontend() {
 
   router.get("/", function*() {
     const data = {
-      analytics
+      analytics: {data: analytics}
     };
     this.body = renderApp(this, "homepage", data);
   });

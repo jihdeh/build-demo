@@ -18,7 +18,7 @@ class HomeView extends Component {
 		const { analytics } = this.props;
 		return (
 			<div className="container">
-				<AnalyticsAccordion analytics={analytics} />
+				<AnalyticsAccordion />
 			</div>
 		)
 	}

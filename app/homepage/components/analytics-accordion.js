@@ -11,11 +11,21 @@ import withState from "recompose/withState";
 import { map, get } from "../../../util/functional-immutable";
 import LoadDataSpinner from "./load-data-spinner";
 import {Icon} from "antd";
+import {
+	getBuild
+} from "../homepage-actions";
 
 
-const toggleInfo = props => (index) => {
-	props.setActiveKey(index);
-};
+const mapStateToProps = state => ({
+	analytics: state.get("analytics")
+});
+
+const mapDispatchToProps = (dispatch,props) => ({
+	toggleInfo: (index, id) => {
+		props.setActiveKey(index);
+		dispatch(getBuild(id));
+	}
+});
 
 const enhance = compose(
     setDisplayName("AnalyticsAccordion"),
@@ -25,7 +35,7 @@ const enhance = compose(
         toggleInfo: PropTypes.func
     }),
     withState("activeKey", "setActiveKey"),
-    withHandlers({toggleInfo})
+    connect(mapStateToProps, mapDispatchToProps)
 );
 
 
@@ -34,7 +44,8 @@ const AnalyticsAccordion = enhance(({
     toggleInfo,
     activeKey
 }) => {
-	const analyticsData = [...analytics.toJS()];
+	const analyticsData = Object.assign({}, analytics.toJS());
+	console.log(analyticsData)
 	const $buildColorSelect = (status) => {
 		switch(status) {
 			case "Pending":
@@ -55,7 +66,7 @@ const AnalyticsAccordion = enhance(({
 			default:
 				return;
 		}
-	}
+	};
 	return (
 		<div>
 			<ul className="list-head">
@@ -69,10 +80,10 @@ const AnalyticsAccordion = enhance(({
 				<li>Functional Test</li>
 			</ul>
 			<div>
-				{analyticsData && analyticsData.map((value, index) =>
+				{analyticsData.data && analyticsData.data.map((value, index) =>
 					<ul key={index} 
 						className={`list-sub ${$buildColorSelect(value.status)}`} 
-						onTouchTap={_ => toggleInfo(index)}>
+						onTouchTap={_ => toggleInfo(index, value.id)}>
 						<li className="list-sub__first">
 							{value.type === "firewall" ? <Icon type="link" /> : <Icon type="desktop" />}
 							<p>{value.id}</p>
@@ -85,20 +96,58 @@ const AnalyticsAccordion = enhance(({
 						</li>
 						<li className="list-sub__first">
 							<p>{value.status}</p>
-						</li><li className="list-sub__first">
+						</li>
+						<li className="list-sub__first">
 							<p>{value.status}</p>
-						</li><li className="list-sub__first">
+						</li>
+						<li className="list-sub__first">
 							<p>{value.status}</p>
-						</li><li className="list-sub__first">
+						</li>
+						<li className="list-sub__first">
 							<p>{value.status}</p>
-						</li><li className="list-sub__first">
+						</li>
+						<li className="list-sub__first">
 							<p>{value.status}</p>
 						</li>
 						{activeKey === index ? 
-							<li>henmahjajhsjhasgjasjjas
-							khashakshkashkahkskhashkas
-							khaskhashksahkhkshkashashkaskh
-							kjaskashkahkshas</li>
+							<li>
+								<div className="block-analytics">
+									<h4>Metrics</h4>
+									<ul className="metric-list">
+										<li>
+											<Icon type="caret-up" />
+											<p>63</p>
+											<p>Test</p>
+
+										</li>
+										<li>
+											<Icon type="caret-up" />
+											<p>63</p>
+											<p>Maintainability</p>
+										</li>
+										<li>
+											<Icon type="caret-right" />
+											<p>63</p>
+											<p>Security</p>
+										</li>
+										<li>
+											<Icon type="caret-right" />
+											<p>63</p>
+											<p>Workmanship</p>
+										</li>
+									</ul>
+								</div>
+								<div className="block-analytics">
+									<h4>Build</h4>
+								</div>
+								<div className="block-analytics">
+									<h4>Unit Test</h4>
+								</div>
+								<div className="block-analytics">
+									<h4>Functional Test</h4>
+								</div>
+
+							</li>
 
 						: null}
 					</ul>
