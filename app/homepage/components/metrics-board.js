@@ -4,9 +4,7 @@ import compose from "recompose/compose";
 import setDisplayName from "recompose/setDisplayName";
 import setPropTypes from "recompose/setPropTypes";
 import onlyUpdateForPropTypes from "recompose/onlyUpdateForPropTypes";
-import { Map, toJS } from "immutable";
-import withHandlers from "recompose/withHandlers";
-import withState from "recompose/withState";
+import { Map } from "immutable";
 import {Icon} from "antd";
 
 
@@ -65,7 +63,7 @@ const MetricsBoard = enhance(({
 							</li>
 						</ul>
 					</div>
-					<div className="block-analytics">
+					<div className={`block-analytics ${metricBorderColor(value.build.overall)}`}>
 						<h4>Build</h4>
 						<ul className="metric-list">
 							<li>
@@ -81,10 +79,10 @@ const MetricsBoard = enhance(({
 						</ul>
 						<p>{value.build.date}</p>
 					</div>
-					<div className="block-analytics">
+					<div className={`block-analytics ${metricBorderColor(value.u_test.overall)}`}>
 						<h4>Unit Test</h4>
 					</div>
-					<div className="block-analytics">
+					<div className={`block-analytics ${metricBorderColor(value.fn_test.overall)}`}>
 						<h4>Functional Test</h4>
 					</div>
 					<div className="block-analytics-feedback">
