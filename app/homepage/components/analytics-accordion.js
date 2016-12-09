@@ -14,6 +14,7 @@ import {Icon} from "antd";
 import {
 	getBuild
 } from "../homepage-actions";
+import MetricsBoard from "./metrics-board";
 
 
 const mapStateToProps = state => ({
@@ -45,7 +46,6 @@ const AnalyticsAccordion = enhance(({
     activeKey
 }) => {
 	const analyticsData = Object.assign({}, analytics.toJS());
-	console.log(analyticsData)
 	const $buildColorSelect = (status) => {
 		switch(status) {
 			case "Pending":
@@ -109,44 +109,11 @@ const AnalyticsAccordion = enhance(({
 						<li className="list-sub__first">
 							<p>{value.status}</p>
 						</li>
-						{activeKey === index ? 
+						{activeKey === index ?
 							<li>
-								<div className="block-analytics">
-									<h4>Metrics</h4>
-									<ul className="metric-list">
-										<li>
-											<Icon type="caret-up" />
-											<p>63</p>
-											<p>Test</p>
-
-										</li>
-										<li>
-											<Icon type="caret-up" />
-											<p>63</p>
-											<p>Maintainability</p>
-										</li>
-										<li>
-											<Icon type="caret-right" />
-											<p>63</p>
-											<p>Security</p>
-										</li>
-										<li>
-											<Icon type="caret-right" />
-											<p>63</p>
-											<p>Workmanship</p>
-										</li>
-									</ul>
-								</div>
-								<div className="block-analytics">
-									<h4>Build</h4>
-								</div>
-								<div className="block-analytics">
-									<h4>Unit Test</h4>
-								</div>
-								<div className="block-analytics">
-									<h4>Functional Test</h4>
-								</div>
-
+								<MetricsBoard 
+									metrics={analyticsData.buildStats}
+								/>
 							</li>
 
 						: null}

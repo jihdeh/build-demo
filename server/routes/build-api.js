@@ -11,6 +11,7 @@ api.use(bodyParser());
 router.get("/:identifier", function*() {
 	const id = this.params.identifier;
 	const response = stats.filter(value => value.id === id);
+	console.log(response, id)
 	this.body = response;
 });
 
