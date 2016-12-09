@@ -67,12 +67,25 @@
                 margin: 10px 30px 0px 30px;
             }
         }
+        &.build {
+            margin-top: 41px;
+        }
     }
     &.metric-border__success {
         color: #3fa901;
     }
     &.metric-border__danger {
         color: #dd0f32;
+    }
+    &.analytic__build {
+        .build__date {
+            position: absolute;
+            bottom: 0px;
+            margin-left: 58px;
+        }
+    }
+    h4 {
+        padding: 3px;
     }
 }
 

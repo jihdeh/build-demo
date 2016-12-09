@@ -37,7 +37,7 @@ const MetricsBoard = enhance(({
 			{metrics.map((value, index) => {
 				return (
 					<div>
-					<div className={`block-analytics ${metricBorderColor(value.metrics.overall)}`}>
+					<div className={`block-analytics analytic__metrics ${metricBorderColor(value.metrics.overall)}`}>
 						<h4>Metrics</h4>
 						<ul className="metric-list">
 							<li>
@@ -63,9 +63,9 @@ const MetricsBoard = enhance(({
 							</li>
 						</ul>
 					</div>
-					<div className={`block-analytics ${metricBorderColor(value.build.overall)}`}>
+					<div className={`block-analytics analytic__build ${metricBorderColor(value.build.overall)}`}>
 						<h4>Build</h4>
-						<ul className="metric-list">
+						<ul className="metric-list build">
 							<li>
 								<Icon type="desktop" />
 								<p>Debug</p>
@@ -77,12 +77,12 @@ const MetricsBoard = enhance(({
 
 							</li>
 						</ul>
-						<p>{value.build.date}</p>
+						<p className="build__date">{value.build.date}</p>
 					</div>
-					<div className={`block-analytics ${metricBorderColor(value.u_test.overall)}`}>
+					<div className={`block-analytics analytic__unit ${metricBorderColor(value.u_test.overall)}`}>
 						<h4>Unit Test</h4>
 					</div>
-					<div className={`block-analytics ${metricBorderColor(value.fn_test.overall)}`}>
+					<div className={`block-analytics analytic__functional ${metricBorderColor(value.fn_test.overall)}`}>
 						<h4>Functional Test</h4>
 					</div>
 					<div className="block-analytics-feedback">
