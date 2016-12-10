@@ -80,9 +80,21 @@
     &.analytic__build {
         .build__date {
             position: relative;
-            bottom: -43px;
+            bottom: -57px;
             margin-left: 58px;
         }
+    }
+    &.analytic__unit .analytics__unit-test_passed, 
+    &.analytic__functional .analytics__functional-test_passed {
+        position: relative;
+        bottom: 160px;
+        margin-left: 141px;
+    }
+    &.analytic__unit .analytics__unit-code_coverage,
+    &.analytic__functional .analytics__functional-code_coverage {
+        position: relative;
+        bottom: 122px;
+        text-align: center;
     }
     h4 {
         padding: 3px;

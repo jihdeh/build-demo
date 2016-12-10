@@ -96,25 +96,58 @@ const MetricsBoard = enhance(({
 					<div className={`block-analytics analytic__unit ${metricBorderColor(value.u_test.overall)}`}>
 						<h4>Unit Test</h4>
 						<ResponsiveContainer>
-						<PieChart width={200} height={200}>
-					        <Pie
-					          data={value.u_test.chart} 
-					          cx={50} 
-					          cy={100} 
-					          labelLine={false}
-					          label={renderCustomizedLabel}
-					          outerRadius={50} 
-					          fill="#8884d8"
-					        >
-					        	{
-					          	value.u_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-					          }
-					        </Pie>
-					    </PieChart>
+							<PieChart width={200} height={200}>
+						        <Pie
+						          data={value.u_test.chart} 
+						          cx={55} 
+						          cy={100} 
+						          labelLine={false}
+						          label={renderCustomizedLabel}
+						          outerRadius={50} 
+						          fill="#8884d8"
+						        >
+						        	{
+						          	value.u_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+						          }
+						        </Pie>
+						    </PieChart>
 					    </ResponsiveContainer>
+					    <div className="analytics__unit-test_passed">
+					    	<h1>{value.u_test.test_passed} %</h1>
+					    	<p>test passed</p>
+					    </div>
+					    <div className="analytics__unit-code_coverage">
+					    	<p>{value.u_test.coverage} %</p>
+					    	<p>code covered</p>
+					    </div>
 					</div>
 					<div className={`block-analytics analytic__functional ${metricBorderColor(value.fn_test.overall)}`}>
 						<h4>Functional Test</h4>
+						<ResponsiveContainer>
+							<PieChart width={200} height={200}>
+						        <Pie
+						          data={value.fn_test.chart} 
+						          cx={55} 
+						          cy={100} 
+						          labelLine={false}
+						          label={renderCustomizedLabel}
+						          outerRadius={50} 
+						          fill="#8884d8"
+						        >
+						        	{
+						          	value.fn_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+						          }
+						        </Pie>
+						    </PieChart>
+					    </ResponsiveContainer>
+					    <div className="analytics__functional-test_passed">
+					    	<h1>{value.fn_test.test_passed} %</h1>
+					    	<p>test passed</p>
+					    </div>
+					    <div className="analytics__functional-code_coverage">
+					    	<p>{value.fn_test.coverage} %</p>
+					    	<p>code covered</p>
+					    </div>
 					</div>
 					<div className="block-analytics-feedback">
 						<h4>Functional Test</h4>

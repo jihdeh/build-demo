@@ -84,7 +84,7 @@ const AnalyticsAccordion = enhance(({
 						className={`list-sub ${$buildColorSelect(value.status)}`} 
 						onTouchTap={_ => toggleInfo(index, value.id)}>
 						<li className="list-sub__first">
-							{value.type === "firewall" ? <Icon type="link" /> : <Icon type="desktop" />}
+							{value.type === "firewall" ? <Icon type="windows" /> : <Icon type="desktop" />}
 							<p>{value.id}</p>
 						</li>
 						<li className="list-sub__first">

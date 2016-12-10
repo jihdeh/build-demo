@@ -15,6 +15,8 @@ module.exports = [{
     },
     u_test: {
         overall: 0,
+        coverage: 0,
+        test_passed: 0,
         chart: [{
             name: "a",
             value: 42
@@ -25,6 +27,8 @@ module.exports = [{
     },
     fn_test: {
         overall: 0,
+        coverage: 0,
+        test_passed: 0,
         chart: [{
             name: "a",
             value: 4021
@@ -53,6 +57,8 @@ module.exports = [{
     },
     u_test: {
         overall: 0,
+        coverage: 0,
+        test_passed: 0,
         chart: [{
             name: "a",
             value: 142
@@ -63,6 +69,8 @@ module.exports = [{
     },
     fn_test: {
         overall: 0,
+        coverage: 0,
+        test_passed: 0,
         chart: [{
             name: "a",
             value: 321
@@ -91,6 +99,8 @@ module.exports = [{
     u_test: {
         overall: 100,
         coverage: 73,
+        coverage: 55,
+        test_passed: 81,
         chart: [{
             name: "a",
             value: 142
@@ -102,6 +112,7 @@ module.exports = [{
     fn_test: {
         overall: 100,
         coverage: 68,
+        test_passed: 73,
         chart: [{
             name: "a",
             value: 431
@@ -170,6 +181,7 @@ module.exports = [{
     u_test: {
         overall: 100,
         coverage: 73,
+        test_passed: 53,
         chart: [{
             name: "a",
             value: 942
@@ -181,6 +193,7 @@ module.exports = [{
     fn_test: {
         overall: 100,
         coverage: 68,
+        test_passed: 69,
         chart: [{
             name: "a",
             value: 1321
