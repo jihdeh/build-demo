@@ -5,21 +5,11 @@ import setDisplayName from "recompose/setDisplayName";
 import setPropTypes from "recompose/setPropTypes";
 import onlyUpdateForPropTypes from "recompose/onlyUpdateForPropTypes";
 import { Map } from "immutable";
-import {Icon} from "antd";
+import {Icon, Button, Select, Progress} from "antd";
 import {ResponsiveContainer, PieChart, Pie, Sector, Cell} from "recharts";
+import ChartView from "./chart";
 
-const RADIAN = Math.PI / 180;                    
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
- 	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x  = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy  + radius * Math.sin(-midAngle * RADIAN);
- 
-  return (
-    <text x={x} y={y} fill="white" textAnchor={x > cx ? "start" : "end"} 	dominantBaseline="central">
-    	{`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
+const Option = Select.Option;
 
 const enhance = compose(
     setDisplayName("MetricsBoard"),
@@ -43,9 +33,71 @@ const MetricsBoard = enhance(({
 		} else {
 			return "";
 		}
-	}
-	const data01 = [{name: "Group A", value: 142}, {name: "Group B", value: 10}];
-	const COLORS = ["#00C49F", "#FF8042"];
+	};
+
+	const setStatusLayer = (status) => {
+		switch(status) {
+			case "Pending":
+				return (
+					<span>
+						<h3>Result</h3>
+						<p>No Stats</p>
+					</span>
+				);
+				break;
+			case "Running":
+				return (
+					<span>
+						<h3>Result</h3>
+						<p>In Progress </p>
+						<Progress percent={50} status="active" />
+						<Button>View Logs</Button>
+					</span>
+				);
+				break;
+			case "Complete":
+				return (
+					<span>
+						<h3>Result</h3>
+						<p>Build Complete</p>
+						<Button>Deploy</Button>
+						<p>to</p>
+						<Select size="large" defaultValue="production" style={{ width: 200 }}>
+					      <Option value="production">Production</Option>
+					      <Option value="staging">Staging</Option>
+					    </Select>
+					</span>
+				);
+				break;
+			case "Rejected":
+				return (
+					<span>
+						<h3>Result</h3>
+						<p>Change Rejected </p>
+						<h1>Metrics Reduction</h1>
+						<Button>Find Issues</Button>
+					</span>
+				);
+				break;
+			case "Accepted":
+				return (
+					<span>
+						<h3>Result</h3>
+						<p>Change Accepted </p>
+						<h1>Auto-Merged</h1>
+						<Button>
+							<Icon type="search" /> 
+							Merged Build
+						</Button>
+					</span>
+				);
+				break;
+			default:
+				return;
+		}
+	};
+
+
 	return (
 		<div>
 			{metrics.map((value, index) => {
@@ -95,23 +147,8 @@ const MetricsBoard = enhance(({
 					</div>
 					<div className={`block-analytics analytic__unit ${metricBorderColor(value.u_test.overall)}`}>
 						<h4>Unit Test</h4>
-						<ResponsiveContainer>
-							<PieChart width={200} height={200}>
-						        <Pie
-						          data={value.u_test.chart} 
-						          cx={55} 
-						          cy={100} 
-						          labelLine={false}
-						          label={renderCustomizedLabel}
-						          outerRadius={50} 
-						          fill="#8884d8"
-						        >
-						        	{
-						          	value.u_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-						          }
-						        </Pie>
-						    </PieChart>
-					    </ResponsiveContainer>
+						<ChartView results={value.u_test.chart} />
+
 					    <div className="analytics__unit-test_passed">
 					    	<h1>{value.u_test.test_passed} %</h1>
 					    	<p>test passed</p>
@@ -123,23 +160,9 @@ const MetricsBoard = enhance(({
 					</div>
 					<div className={`block-analytics analytic__functional ${metricBorderColor(value.fn_test.overall)}`}>
 						<h4>Functional Test</h4>
-						<ResponsiveContainer>
-							<PieChart width={200} height={200}>
-						        <Pie
-						          data={value.fn_test.chart} 
-						          cx={55} 
-						          cy={100} 
-						          labelLine={false}
-						          label={renderCustomizedLabel}
-						          outerRadius={50} 
-						          fill="#8884d8"
-						        >
-						        	{
-						          	value.fn_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
-						          }
-						        </Pie>
-						    </PieChart>
-					    </ResponsiveContainer>
+						
+						<ChartView results={value.fn_test.chart} />
+
 					    <div className="analytics__functional-test_passed">
 					    	<h1>{value.fn_test.test_passed} %</h1>
 					    	<p>test passed</p>
@@ -150,7 +173,7 @@ const MetricsBoard = enhance(({
 					    </div>
 					</div>
 					<div className="block-analytics-feedback">
-						<h4>Functional Test</h4>
+						{setStatusLayer(value.status)}
 					</div>
 					</div>
 				)})

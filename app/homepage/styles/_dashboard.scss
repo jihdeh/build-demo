@@ -84,7 +84,7 @@
             margin-left: 58px;
         }
     }
-    &.analytic__unit .analytics__unit-test_passed, 
+    &.analytic__unit .analytics__unit-test_passed,
     &.analytic__functional .analytics__functional-test_passed {
         position: relative;
         bottom: 160px;
@@ -107,4 +107,19 @@
     width: 200px;
     height: 230px;
     display: inline-block;
+    text-align: center;
+    p {
+        font-size: 20px;
+    }
+    h1 {
+        text-align: center;
+        line-height: 100%;
+        margin-top: 9px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        color: #000;
+        text-decoration: underline;
+        line-height: 3em;
+    }
 }
