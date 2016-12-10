@@ -10,7 +10,7 @@ How to run locally
 - yarn install or npm install
 - Add enviroment variables ( NODE_ENV=development)
 - e.g `NODE_ENV=development npm run dev`
-- visit [http://localhost:555](http://localhost:55555)
+- visit localhost:5555
 
 ```
 
