@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import IPropTypes from "react-immutable-proptypes";
 import compose from "recompose/compose";
 import setDisplayName from "recompose/setDisplayName";
 import setPropTypes from "recompose/setPropTypes";
@@ -25,14 +24,14 @@ const enhance = compose(
     setDisplayName("ChartView"),
     onlyUpdateForPropTypes,
     setPropTypes({
-        results: IPropTypes.map
+        results: PropTypes.array.isRequired
     })
 );
 
 const pieColors = ["#00C49F", "#FF8042"];
 
 const ChartView = enhance(({
-    results = new Map(),
+    results,
 }) => (
 	<ResponsiveContainer>
 		<PieChart width={200} height={200}>
@@ -45,7 +44,7 @@ const ChartView = enhance(({
 	          outerRadius={50} 
 	          fill="#8884d8">
 		        {
-		        	results.map((entry, index) => <Cell fill={pieColors[index % pieColors.length]}/>)
+		        	results.map((entry, index) => <Cell key={index} fill={pieColors[index % pieColors.length]}/>)
 		        }
 	        </Pie>
 	    </PieChart>

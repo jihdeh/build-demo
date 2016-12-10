@@ -1,6 +1,5 @@
 import koa from "koa";
 import mount from "koa-mount";
-import cacheControl from "koa-cache-control";
 import apiErrorHandler from "../util/api-error-handler";
 import { BuildApi as buildApi } from "./routes";
 

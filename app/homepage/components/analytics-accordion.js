@@ -8,17 +8,13 @@ import { Map, toJS } from "immutable";
 import { connect } from "react-redux";
 import withHandlers from "recompose/withHandlers";
 import withState from "recompose/withState";
-import { map, get } from "../../../util/functional-immutable";
+import { map } from "../../../util/functional-immutable";
 import {Icon} from "antd";
 import {
 	getBuild
 } from "../homepage-actions";
 import MetricsBoard from "./metrics-board";
 
-
-const mapStateToProps = state => ({
-	analytics: state.get("analytics")
-});
 
 const mapDispatchToProps = (dispatch,props) => ({
 	toggleInfo: (index, id) => {
@@ -36,7 +32,7 @@ const enhance = compose(
         toggleInfo: PropTypes.func
     }),
     withState("activeKey", "setActiveKey"),
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(null, mapDispatchToProps)
 );
 
 

@@ -1,12 +1,11 @@
 import React, { PropTypes } from "react";
-import IPropTypes from "react-immutable-proptypes";
 import compose from "recompose/compose";
 import setDisplayName from "recompose/setDisplayName";
 import withState from "recompose/withState";
 import withHandlers from "recompose/withHandlers";
 import setPropTypes from "recompose/setPropTypes";
 import onlyUpdateForPropTypes from "recompose/onlyUpdateForPropTypes";
-import { Map } from "immutable";
+import { Map, List } from "immutable";
 import {Icon, Button, Select, Progress,  Modal} from "antd";
 import ChartView from "./chart";
 
@@ -20,7 +19,7 @@ const enhance = compose(
     setDisplayName("MetricsBoard"),
     onlyUpdateForPropTypes,
     setPropTypes({
-        metrics: IPropTypes.map,
+        metrics: PropTypes.array,
         triggerModal: PropTypes.func,
         visible: PropTypes.bool
     }),
@@ -30,7 +29,7 @@ const enhance = compose(
 
 
 const MetricsBoard = enhance(({
-    metrics = new Map(),
+    metrics,
     triggerModal,
     visible
 }) => {
@@ -112,7 +111,7 @@ const MetricsBoard = enhance(({
 		<div>
 			{metrics.map((value, index) => {
 				return (
-					<div>
+					<div key={index}>
 					<Modal 
 						title="Basic Modal" 
 						visible={visible}
@@ -127,7 +126,7 @@ const MetricsBoard = enhance(({
 			        </Modal>
 					<div 
 						className={`block-analytics analytic__metrics ${metricBorderColor(value.metrics.overall)}`}
-						onTouchTap={triggerModal}>
+						onClick={triggerModal}>
 						<h4>Metrics</h4>
 						<ul className="metric-list">
 							<li>
@@ -155,7 +154,7 @@ const MetricsBoard = enhance(({
 					</div>
 					<div 
 						className={`block-analytics analytic__build ${metricBorderColor(value.build.overall)}`}
-						onTouchTap={triggerModal}>
+						onClick={triggerModal}>
 						<h4>Build</h4>
 						<ul className="metric-list build">
 							<li>
@@ -173,7 +172,7 @@ const MetricsBoard = enhance(({
 					</div>
 					<div 
 						className={`block-analytics analytic__unit ${metricBorderColor(value.u_test.overall)}`}
-						onTouchTap={triggerModal}>
+						onClick={triggerModal}>
 						<h4>Unit Test</h4>
 						<ChartView results={value.u_test.chart} />
 
@@ -188,7 +187,7 @@ const MetricsBoard = enhance(({
 					</div>
 					<div 
 						className={`block-analytics analytic__functional ${metricBorderColor(value.fn_test.overall)}`}
-						onTouchTap={triggerModal}>
+						onClick={triggerModal}>
 						<h4>Functional Test</h4>
 						
 						<ChartView results={value.fn_test.chart} />

@@ -36,15 +36,15 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.scss/,
-      loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded'
+      loader: "style-loader!css-loader!sass-loader?outputStyle=expanded"
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader'
+      loader: "style-loader!css-loader"
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?{progressive:true, optimizationLevel: 3, interlaced: false, pngquant:{quality: "30-40", speed: 1}}'
+        "file?hash=sha512&digest=hex&name=[hash].[ext]",
+        "image-webpack?{progressive:true, optimizationLevel: 3, interlaced: false, pngquant:{quality: '30-40', speed: 1}}"
       ]
     }]
   },
@@ -59,8 +59,8 @@ module.exports = {
     new CleanWebpackPlugin([path.join("dist", "js")]),
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 15 }),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production")
       }
     }),
     // Emit a file with assets paths
