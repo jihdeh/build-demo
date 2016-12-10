@@ -14,15 +14,10 @@
     "style:prod": "node-sass -E \"UTF-8\" --output-style compressed style/index.s[ac]ss > dist/style.css && postcss --use autoprefixer dist/style.css -r",
     "postinstall": "npm run build",
     "images": "cp -R images dist",
-    "test": "nodemon --exec npm run coverage",
-    "coverage": "istanbul cover _mocha -- -R spec --compilers js:babel-core/register",
-    "test:view": "jest"
+    "test": "jest"
   },
   "jest": {
     "verbose": true,
-    "testPathDirs": [
-      "frontend-tests"
-    ],
     "moduleNameMapper": {
       "\\.(css|less|scss)$": "identity-obj-proxy"
     },

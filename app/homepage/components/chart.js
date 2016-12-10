@@ -31,7 +31,7 @@ const enhance = compose(
 const pieColors = ["#00C49F", "#FF8042"];
 
 const ChartView = enhance(({
-    results,
+    results = [],
 }) => (
 	<ResponsiveContainer>
 		<PieChart width={200} height={200}>

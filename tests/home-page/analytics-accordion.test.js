@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
-import {shallow, mount, render} from "enzyme";
+import {mount} from "enzyme";
 import AnalyticsAccordion from "../../app/homepage/components/analytics-accordion";
 import { Map, fromJS } from "immutable";
 
@@ -25,8 +25,7 @@ describe("tests for AnalyticsAccordionComponent", () => {
   });
 
  it("renders list metric elements", () => {
- 	component.setProps(fromJS({analytics: {data: [{overall: 100}, {overall: 60}]} }));
- 	console.log(component.html())
+ 	component.setProps(fromJS({analytics: {data: [{overall: 100}, {overall: 60}]} })); //TODO
   });
 
   it("asserts that div has correct structure", () => {
@@ -34,14 +33,6 @@ describe("tests for AnalyticsAccordionComponent", () => {
   		`<div><ul class=\"list-head\"><li>Changelist/Build</li><li>Owner</li><li>Time Started</li><li>State</li><li>Metrics</li><li>Build</li><li>Unit Test</li><li>Functional Test</li></ul><div></div></div>`
   		);
   });
-
-	// it("List displays when results are available", () => {
-	// 	 const wrapper = renderer.create(<AnalyticsAccordion store={store}
- //    	analytics={fromJS({analytics: {data: [{overall: 100}, {overall: 60}]} })}/>);
-	// 	  let tree = wrapper.toJSON();
-	// 	  console.log(tree)
-	// 	  expect(tree).toMatchSnapshot();
-	// });
   
 });
 
