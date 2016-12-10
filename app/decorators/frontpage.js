@@ -15,7 +15,7 @@ export default function frontPage() {
 								<Col xs={24} sm={24} md={6} lg={4}>
 									<a className="logo" href="/">
 										<img alt="logo" src="/images/bar-chart.svg"/>
-										<span>Sucker</span>
+										<span>Crossbow</span>
 									</a>
 								</Col>
 							</Row>

@@ -1,3 +1,7 @@
+# CrossBow
+
+This is a simple dashboard depicting the flow of a build process.
+
 How to run locally
 
 ```
@@ -11,8 +15,11 @@ How to run locally
 ```
 
 Tech Stack
- * React/Redux
- * ImmutableJS
- * KoaJS
- * NodeJS
+	* ES6
+	* React/Redux
+	* Recompose - for stateless functional components
+	* ImmutableJS
+	* RamdaJS - functional javascript
+	* KoaJS - server-side
+	* NodeJS - Enviroment engine
 
