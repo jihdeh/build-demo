@@ -96,34 +96,34 @@ const AnalyticsAccordion = enhance(({
 			</ul>
 			<div>
 				{analyticsData.data && analyticsData.data.map((value, index) =>
-					<ul key={index} 
-						className={`list-sub ${$buildColorSelect(value.status)}`} 
-						onTouchTap={_ => toggleInfo(index, value.id)}>
-						<li className="list-sub__first">
-							{value.type === "firewall" ? <Icon type="windows" /> : <Icon type="desktop" />}
-							<p>{value.id}</p>
-						</li>
-						<li className="list-sub__first">
-							<p>{value.owner}</p>
-						</li>
-						<li className="list-sub__first">
-							<p>{value.time}</p>
-						</li>
-						<li className="list-sub__first">
-							<p>{value.status}</p>
-						</li>
-						<li className="list-sub__first">
-							<div className={`${metricBoxColor(value.metrics.overall)}`}></div>
-						</li>
-						<li className="list-sub__first">
-							<div className={`${metricBoxColor(value.build.overall)}`}></div>
-						</li>
-						<li className="list-sub__first">
-							<div className={`${metricBoxColor(value.u_test.overall)}`}></div>
-						</li>
-						<li className="list-sub__first">
-							<div className={`${metricBoxColor(value.fn_test.overall)}`}></div>
-						</li>
+					<ul key={index} className={`list-sub ${$buildColorSelect(value.status)}`}>
+						<span onTouchTap={_ => toggleInfo(index, value.id)}>
+							<li className="list-sub__first">
+								{value.type === "firewall" ? <Icon type="windows" /> : <Icon type="desktop" />}
+								<p>{value.id}</p>
+							</li>
+							<li className="list-sub__first">
+								<p>{value.owner}</p>
+							</li>
+							<li className="list-sub__first">
+								<p>{value.time}</p>
+							</li>
+							<li className="list-sub__first">
+								<p>{value.status}</p>
+							</li>
+							<li className="list-sub__first">
+								<div className={`${metricBoxColor(value.metrics.overall)}`}></div>
+							</li>
+							<li className="list-sub__first">
+								<div className={`${metricBoxColor(value.build.overall)}`}></div>
+							</li>
+							<li className="list-sub__first">
+								<div className={`${metricBoxColor(value.u_test.overall)}`}></div>
+							</li>
+							<li className="list-sub__first">
+								<div className={`${metricBoxColor(value.fn_test.overall)}`}></div>
+							</li>
+						</span>
 						{activeKey === index ?
 							<li>
 								<MetricsBoard 
