@@ -22,6 +22,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch,props) => ({
 	toggleInfo: (index, id) => {
+		if(props.activeKey === index) return props.setActiveKey(null);
 		props.setActiveKey(index);
 		dispatch(getBuild(id));
 	}
