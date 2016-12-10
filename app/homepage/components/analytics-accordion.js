@@ -67,6 +67,21 @@ const AnalyticsAccordion = enhance(({
 				return;
 		}
 	};
+
+	const metricBoxColor = (overall) => {
+		if(overall === -1) {
+			return "list-box__rejected";
+		} else if(overall > 59 && overall < 100) {
+			return "list-box__running";
+		} else if(overall === 100) {
+			return "list-box__completed";
+		} else if(overall === 0){
+			return "list-box__pending";
+		} else {
+			return;
+		}
+	};
+
 	return (
 		<div>
 			<ul className="list-head">
@@ -98,16 +113,16 @@ const AnalyticsAccordion = enhance(({
 							<p>{value.status}</p>
 						</li>
 						<li className="list-sub__first">
-							<p>{value.status}</p>
+							<div className={`${metricBoxColor(value.metrics.overall)}`}></div>
 						</li>
 						<li className="list-sub__first">
-							<p>{value.status}</p>
+							<div className={`${metricBoxColor(value.build.overall)}`}></div>
 						</li>
 						<li className="list-sub__first">
-							<p>{value.status}</p>
+							<div className={`${metricBoxColor(value.u_test.overall)}`}></div>
 						</li>
 						<li className="list-sub__first">
-							<p>{value.status}</p>
+							<div className={`${metricBoxColor(value.fn_test.overall)}`}></div>
 						</li>
 						{activeKey === index ?
 							<li>

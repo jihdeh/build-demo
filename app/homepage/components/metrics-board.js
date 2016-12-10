@@ -27,7 +27,7 @@ const MetricsBoard = enhance(({
 		if(overall === -1) {
 			return "metric-border__danger";
 		} else if(overall > 59 && overall < 100) {
-			return "metrics-boder__pending";
+			return "metric-boder__running";
 		} else if(overall === 100) {
 			return "metric-border__success";
 		} else {
@@ -96,7 +96,6 @@ const MetricsBoard = enhance(({
 				return;
 		}
 	};
-
 
 	return (
 		<div>
