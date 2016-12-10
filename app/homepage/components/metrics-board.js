@@ -6,7 +6,20 @@ import setPropTypes from "recompose/setPropTypes";
 import onlyUpdateForPropTypes from "recompose/onlyUpdateForPropTypes";
 import { Map } from "immutable";
 import {Icon} from "antd";
+import {ResponsiveContainer, PieChart, Pie, Sector, Cell} from "recharts";
 
+const RADIAN = Math.PI / 180;                    
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+ 	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x  = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy  + radius * Math.sin(-midAngle * RADIAN);
+ 
+  return (
+    <text x={x} y={y} fill="white" textAnchor={x > cx ? "start" : "end"} 	dominantBaseline="central">
+    	{`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
 const enhance = compose(
     setDisplayName("MetricsBoard"),
@@ -31,7 +44,8 @@ const MetricsBoard = enhance(({
 			return "";
 		}
 	}
-	console.log(metrics)
+	const data01 = [{name: "Group A", value: 142}, {name: "Group B", value: 10}];
+	const COLORS = ["#00C49F", "#FF8042"];
 	return (
 		<div>
 			{metrics.map((value, index) => {
@@ -81,6 +95,23 @@ const MetricsBoard = enhance(({
 					</div>
 					<div className={`block-analytics analytic__unit ${metricBorderColor(value.u_test.overall)}`}>
 						<h4>Unit Test</h4>
+						<ResponsiveContainer>
+						<PieChart width={200} height={200}>
+					        <Pie
+					          data={value.u_test.chart} 
+					          cx={50} 
+					          cy={100} 
+					          labelLine={false}
+					          label={renderCustomizedLabel}
+					          outerRadius={50} 
+					          fill="#8884d8"
+					        >
+					        	{
+					          	value.u_test.chart.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)
+					          }
+					        </Pie>
+					    </PieChart>
+					    </ResponsiveContainer>
 					</div>
 					<div className={`block-analytics analytic__functional ${metricBorderColor(value.fn_test.overall)}`}>
 						<h4>Functional Test</h4>

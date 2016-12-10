@@ -13,8 +13,26 @@ module.exports = [{
         overall: 0,
         date: "2:00pm 4/18/2014"
     },
-    u_test: { overall: 0 },
-    fn_test: { overall: 0 }
+    u_test: {
+        overall: 0,
+        chart: [{
+            name: "a",
+            value: 42
+        }, {
+            name: "b",
+            value: 110
+        }]
+    },
+    fn_test: {
+        overall: 0,
+        chart: [{
+            name: "a",
+            value: 4021
+        }, {
+            name: "b",
+            value: 2145
+        }]
+    }
 
 }, {
     id: "432462",
@@ -33,8 +51,26 @@ module.exports = [{
         overall: 0,
         date: "1:00pm 4/18/2015"
     },
-    u_test: { overall: 0 },
-    fn_test: { overall: 0 }
+    u_test: {
+        overall: 0,
+        chart: [{
+            name: "a",
+            value: 142
+        }, {
+            name: "b",
+            value: 100
+        }]
+    },
+    fn_test: {
+        overall: 0,
+        chart: [{
+            name: "a",
+            value: 321
+        }, {
+            name: "b",
+            value: 215
+        }]
+    }
 }, {
     id: "432461",
     type: "firewall",
@@ -54,11 +90,25 @@ module.exports = [{
     },
     u_test: {
         overall: 100,
-        coverage: 73
+        coverage: 73,
+        chart: [{
+            name: "a",
+            value: 142
+        }, {
+            name: "b",
+            value: 143
+        }]
     },
     fn_test: {
         overall: 100,
-        coverage: 68
+        coverage: 68,
+        chart: [{
+            name: "a",
+            value: 431
+        }, {
+            name: "b",
+            value: 245
+        }]
     }
 }, {
     id: "Tenrox-R1_1234",
@@ -78,13 +128,27 @@ module.exports = [{
     },
     u_test: {
         overall: 100,
-        coverage: 73,
-        test_passed: 73
+        coverage: 76,
+        test_passed: 73,
+        chart: [{
+            name: "a",
+            value: 142
+        }, {
+            name: "b",
+            value: 154
+        }]
     },
     fn_test: {
         overall: 100,
         coverage: 23,
-        test_passed: 68
+        test_passed: 68,
+        chart: [{
+            name: "a",
+            value: 4321
+        }, {
+            name: "b",
+            value: 2145
+        }]
     }
 }, {
     id: "432460",
@@ -105,11 +169,25 @@ module.exports = [{
     },
     u_test: {
         overall: 100,
-        coverage: 73
+        coverage: 73,
+        chart: [{
+            name: "a",
+            value: 942
+        }, {
+            name: "b",
+            value: 533
+        }]
     },
     fn_test: {
         overall: 100,
-        coverage: 68
+        coverage: 68,
+        chart: [{
+            name: "a",
+            value: 1321
+        }, {
+            name: "b",
+            value: 145
+        }]
     }
 }, {
     id: "432459",
@@ -131,11 +209,25 @@ module.exports = [{
     u_test: {
         overall: 100,
         coverage: 73,
-        test_passed: 73
+        test_passed: 73,
+        chart: [{
+            name: "a",
+            value: 242
+        }, {
+            name: "b",
+            value: 300
+        }]
     },
     fn_test: {
         overall: 100,
         coverage: 23,
-        test_passed: 68
+        test_passed: 68,
+        chart: [{
+            name: "a",
+            value: 321
+        }, {
+            name: "b",
+            value: 145
+        }]
     }
 }]

@@ -79,8 +79,8 @@
     }
     &.analytic__build {
         .build__date {
-            position: absolute;
-            bottom: 0px;
+            position: relative;
+            bottom: -43px;
             margin-left: 58px;
         }
     }

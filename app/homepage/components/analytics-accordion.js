@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import withHandlers from "recompose/withHandlers";
 import withState from "recompose/withState";
 import { map, get } from "../../../util/functional-immutable";
-import LoadDataSpinner from "./load-data-spinner";
 import {Icon} from "antd";
 import {
 	getBuild
