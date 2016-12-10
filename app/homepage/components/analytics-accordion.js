@@ -93,7 +93,7 @@ const AnalyticsAccordion = enhance(({
 			<div>
 				{analyticsData.data && analyticsData.data.map((value, index) =>
 					<ul key={index} className={`list-sub ${$buildColorSelect(value.status)}`}>
-						<span onTouchTap={_ => toggleInfo(index, value.id)}>
+						<div onTouchTap={_ => toggleInfo(index, value.id)}>
 							<li className="list-sub__first">
 								{value.type === "firewall" ? <Icon type="windows" /> : <Icon type="desktop" />}
 								<p>{value.id}</p>
@@ -119,7 +119,7 @@ const AnalyticsAccordion = enhance(({
 							<li className="list-sub__first">
 								<div className={`${metricBoxColor(value.fn_test.overall)}`}></div>
 							</li>
-						</span>
+						</div>
 						{activeKey === index ?
 							<li>
 								<MetricsBoard 

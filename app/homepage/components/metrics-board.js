@@ -29,7 +29,7 @@ const enhance = compose(
 
 
 const MetricsBoard = enhance(({
-    metrics,
+    metrics = [],
     triggerModal,
     visible
 }) => {
