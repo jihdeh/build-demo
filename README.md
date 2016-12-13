@@ -16,13 +16,20 @@ How to run locally
 ```
 
 Tech Stack
-	* ES6
-	* React/Redux
-	* Recompose - for stateless functional components
-	* ImmutableJS
-	* RamdaJS - functional javascript
-	* KoaJS - server-side
-	* NodeJS - Enviroment engine
+	
+  * ES6
+	
+  * React/Redux
+	
+  * Recompose - for stateless functional components
+	
+  * ImmutableJS
+	
+  * RamdaJS - functional javascript
+	
+  * KoaJS - server-side
+	
+  * NodeJS - Enviroment engine
 
 
 Running Test:
