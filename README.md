@@ -1,6 +1,7 @@
 # CrossBow
 
 This is a simple dashboard depicting the flow of a build process.
+![crossbow](https://github.com/jihdeh/build-demo/blob/master/Screen%20Shot%202016-12-13%20at%203.02.01%20PM.png)
 
 How to run locally
 
