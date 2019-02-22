@@ -8,7 +8,6 @@ import { Map, toJS } from "immutable";
 import { connect } from "react-redux";
 import withHandlers from "recompose/withHandlers";
 import withState from "recompose/withState";
-import { map } from "../../../util/functional-immutable";
 import {Icon} from "antd";
 import {
 	getBuild

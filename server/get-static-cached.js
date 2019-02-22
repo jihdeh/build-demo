@@ -18,5 +18,6 @@ fs.watch(filename, (event) => {
 console.log(`Serving static assets from ${process.env.STATIC_CDN_PREFIX || "dist"}/static`);
 
 export default function(uri) {
+	console.log((process.env.STATIC_CDN_PREFIX || "") + (hashMap[uri] || ""))
 	return (process.env.STATIC_CDN_PREFIX || "") + (hashMap[uri] || "");
 }
